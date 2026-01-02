@@ -1,6 +1,6 @@
 # vulpes.nvim
 
-A cyberpunk neon colorscheme for Neovim, inspired by the glow of city lights and the cunning of foxes.
+A cyberpunk neon single-color(ish) scheme for Neovim (and many other TUIs) that tries to find a balance between vibes and utility.
 
 <img width="1800" height="1131" alt="screenshot 2025-12-24 at 3 28 57 PM" src="https://github.com/user-attachments/assets/77a9fb8e-33d0-4562-83cb-0f8cc11b1499" />
 
