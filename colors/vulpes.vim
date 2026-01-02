@@ -4,22 +4,27 @@
 " Maintainer: EJ Fox <ejfox@ejfox.com>
 " License: MIT
 
-if exists('g:loaded_vulpes') | finish | endif
-let g:loaded_vulpes = 1
-
-set background=dark
 highlight clear
 if exists('syntax_on')
   syntax reset
 endif
 
+set background=dark
 let g:colors_name = 'vulpes'
 
-" Neovim handles everything in Lua
+" Neovim: use Lua implementation
 if has('nvim')
+  set termguicolors
   lua require('vulpes').load()
   finish
 endif
+
+" Vim: require termguicolors
+if !has('termguicolors')
+  echoerr 'vulpes requires termguicolors'
+  finish
+endif
+set termguicolors
 
 " Vim fallback (basic support)
 " For full experience, use Neovim 0.8+
