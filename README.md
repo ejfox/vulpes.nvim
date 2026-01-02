@@ -8,13 +8,30 @@ A cyberpunk neon single-color(ish) scheme for Neovim (and many other TUIs) that 
 
 ## Features
 
+- **Complete TUI ecosystem** - One theme for your entire terminal workflow
 - **True color support** - Designed for modern terminals with 24-bit color
 - **Dark & Light variants** - Full theme for both backgrounds
 - **100+ highlight groups** - Comprehensive coverage for syntax, LSP, and plugins
 - **Treesitter support** - Rich semantic highlighting
-- **Terminal extras** - Matching configs for Ghostty, Kitty, Alacritty, WezTerm, tmux, and more
 - **Plugin integrations** - Telescope, Snacks.nvim, nvim-cmp, GitSigns, Lualine, and many more
 - **Highly configurable** - Customize transparency, italics, cursor color, and more
+
+## The Full Stack
+
+Vulpes isn't just a Neovim theme - it's a complete visual system for your terminal. One cohesive look across everything:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Terminal Emulators     TUI Apps           Dev Tools        │
+│  ─────────────────     ────────           ─────────         │
+│  ◆ Ghostty             ◆ Neovim           ◆ lazygit         │
+│  ◆ Kitty               ◆ tmux             ◆ fzf             │
+│  ◆ Alacritty           ◆ Yazi             ◆ bat             │
+│  ◆ WezTerm                                                  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+All configs included in `extras/` - copy and go.
 
 ## Requirements
 
@@ -119,21 +136,28 @@ require("lualine").setup({
 })
 ```
 
-## Terminal Extras
+## Terminal & TUI Themes
 
-Matching colorschemes for your terminal and tools are in the `extras/` directory:
+The `extras/` directory contains ready-to-use configs for your entire setup:
 
-| App | File | Installation |
-|-----|------|--------------|
-| Ghostty | `vulpes-ghostty.conf` | Copy to `~/.config/ghostty/themes/` |
-| Kitty | `vulpes-kitty.conf` | Include in `kitty.conf` |
-| Alacritty | `vulpes-alacritty.toml` | Import in `alacritty.toml` |
-| WezTerm | `vulpes-wezterm.lua` | Place in `~/.config/wezterm/colors/` |
-| tmux | `vulpes.tmux` | Source in `tmux.conf` |
-| fzf | `vulpes-fzf.sh` | Source in shell rc |
-| lazygit | `vulpes-lazygit.yml` | Copy theme to `config.yml` |
-| bat | `vulpes-bat.tmTheme` | Add to bat themes, run `bat cache --build` |
-| Yazi | `vulpes-yazi.toml` | Copy to `~/.config/yazi/theme.toml` |
+### Terminal Emulators
+
+| App | File | Quick Install |
+|-----|------|---------------|
+| **Ghostty** | `vulpes-ghostty.conf` | `cp extras/vulpes-ghostty.conf ~/.config/ghostty/themes/vulpes` |
+| **Kitty** | `vulpes-kitty.conf` | Add `include themes/vulpes.conf` to kitty.conf |
+| **Alacritty** | `vulpes-alacritty.toml` | Import in alacritty.toml |
+| **WezTerm** | `vulpes-wezterm.lua` | `cp extras/vulpes-wezterm.lua ~/.config/wezterm/colors/` |
+
+### TUI Applications
+
+| App | File | Quick Install |
+|-----|------|---------------|
+| **tmux** | `vulpes.tmux` | Add `source-file ~/.config/tmux/vulpes.tmux` |
+| **Yazi** | `vulpes-yazi.toml` | `cp extras/vulpes-yazi.toml ~/.config/yazi/theme.toml` |
+| **lazygit** | `vulpes-lazygit.yml` | Merge into `~/.config/lazygit/config.yml` |
+| **fzf** | `vulpes-fzf.sh` | `source` in your `.zshrc` / `.bashrc` |
+| **bat** | `vulpes-bat.tmTheme` | Copy to bat themes, run `bat cache --build` |
 
 ## Color Palette
 
