@@ -2,7 +2,9 @@
 
 A cyberpunk neon colorscheme for Neovim, inspired by the glow of city lights and the cunning of foxes.
 
-![vulpes.nvim](https://user-images.placeholder/vulpes-screenshot.png)
+<img width="1800" height="1131" alt="screenshot 2025-12-24 at 3 28 57 PM" src="https://github.com/user-attachments/assets/77a9fb8e-33d0-4562-83cb-0f8cc11b1499" />
+
+<img width="1800" height="1169" alt="screenshot 2025-12-22 at 11 30 20 PM" src="https://github.com/user-attachments/assets/d8c588f0-c75d-4d2f-bf21-0837ac536ece" />
 
 ## Features
 
