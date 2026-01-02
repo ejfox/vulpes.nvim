@@ -25,14 +25,14 @@ M.dark = {
   base_bright = "#ff277d",
 
   -- Semantic colors
-  error = "#a0f7fc",      -- Bright teal (inverted for pop)
+  error = "#a0f7fc", -- Bright teal (inverted for pop)
   warning = "#ffaa00",
   success = "#ffffff",
   info = "#ff0095",
   hint = "#ff4d9d",
 
   -- Syntax colors
-  comment = "#6eedf7",    -- Teal comments (signature vulpes look)
+  comment = "#6eedf7", -- Teal comments (signature vulpes look)
   keyword = "#ff1aca",
   string = "#f5f5f5",
   number = "#ff33c5",

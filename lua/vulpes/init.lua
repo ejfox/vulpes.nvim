@@ -384,7 +384,7 @@ local function set_git_highlights(c)
 end
 
 -- Plugin highlights
-local function set_plugin_highlights(c, cfg)
+local function set_plugin_highlights(c, _cfg)
   -- Telescope
   if config.plugin_enabled("telescope") then
     hi("TelescopeBorder", { fg = c.border, bg = c.bg_float })

@@ -12,7 +12,7 @@ A cyberpunk neon single-color(ish) scheme for Neovim (and many other TUIs) that 
 Neovim         Terminals       TUI Apps        Bonus
 ──────         ─────────       ────────        ─────
 ◆ 100+ hlgroups   ◆ Ghostty       ◆ tmux          ◆ MapLibre
-◆ Treesitter      ◆ Kitty         ◆ lazygit
+◆ Treesitter      ◆ Kitty         ◆ lazygit       ◆ GLSL shaders
 ◆ LSP             ◆ Alacritty     ◆ Yazi
 ◆ Lualine         ◆ WezTerm       ◆ fzf
 ◆ 15+ plugins                     ◆ bat
@@ -112,6 +112,16 @@ All in `extras/`:
 | lazygit | `vulpes-lazygit.yml` | merge into `~/.config/lazygit/config.yml` |
 | fzf | `vulpes-fzf.sh` | source in shell rc |
 | bat | `vulpes-bat.tmTheme` | copy to bat themes, `bat cache --build` |
+
+### Ghostty Shaders
+
+| | File | Notes |
+|-|------|-------|
+| TFT | `shaders/vulpes-tft.glsl` | subtle LCD subpixel effect |
+| Chromatic | `shaders/vulpes-chromatic.glsl` | CRT chromatic aberration (dark mode only) |
+
+Install: `cp extras/shaders/*.glsl ~/.config/ghostty/shaders/`
+Config: `custom-shader = ~/.config/ghostty/shaders/vulpes-tft.glsl`
 
 ### Bonus
 
