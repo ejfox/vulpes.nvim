@@ -9,9 +9,9 @@ Neon pink/teal colorscheme for Neovim + matching configs for terminal emulators 
 ## Includes
 
 ```
-Neovim         Terminals       TUI Apps
-──────         ─────────       ────────
-◆ 100+ hlgroups   ◆ Ghostty       ◆ tmux
+Neovim         Terminals       TUI Apps        Bonus
+──────         ─────────       ────────        ─────
+◆ 100+ hlgroups   ◆ Ghostty       ◆ tmux          ◆ MapLibre
 ◆ Treesitter      ◆ Kitty         ◆ lazygit
 ◆ LSP             ◆ Alacritty     ◆ Yazi
 ◆ Lualine         ◆ WezTerm       ◆ fzf
@@ -112,6 +112,12 @@ All in `extras/`:
 | lazygit | `vulpes-lazygit.yml` | merge into `~/.config/lazygit/config.yml` |
 | fzf | `vulpes-fzf.sh` | source in shell rc |
 | bat | `vulpes-bat.tmTheme` | copy to bat themes, `bat cache --build` |
+
+### Bonus
+
+| | File | Notes |
+|-|------|-------|
+| MapLibre | `vulpes-maplibre.json` | cyberpunk map style, replace `{key}` with Maptiler API key |
 
 ## Palette
 
