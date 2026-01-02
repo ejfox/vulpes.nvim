@@ -1,0 +1,42 @@
+# Vulpes colorscheme for Lazygit
+# https://github.com/ejfox/vulpes.nvim
+#
+# Installation:
+#   Copy theme section to ~/.config/lazygit/config.yml
+
+gui:
+  theme:
+    activeBorderColor:
+      - "#e60067"
+      - bold
+    inactiveBorderColor:
+      - "#735865"
+    searchingActiveBorderColor:
+      - "#ffaa00"
+      - bold
+    optionsTextColor:
+      - "#ff0095"
+    selectedLineBgColor:
+      - "#2a1520"
+    selectedRangeBgColor:
+      - "#2a1520"
+    cherryPickedCommitBgColor:
+      - "#e60067"
+    cherryPickedCommitFgColor:
+      - "#000000"
+    unstagedChangesColor:
+      - "#ff001e"
+    defaultFgColor:
+      - "#f2cfdf"
+    markedBaseCommitBgColor:
+      - "#e60067"
+    markedBaseCommitFgColor:
+      - "#000000"
+  authorColors:
+    "*": "#e60067"
+  branchColors:
+    main: "#e60067"
+    master: "#e60067"
+    develop: "#ff0095"
+    "feature/*": "#6eedf7"
+    "fix/*": "#ff001e"

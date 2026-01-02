@@ -1,0 +1,147 @@
+*vulpes.txt*  A cyberpunk neon colorscheme for Neovim
+
+Author:   EJ Fox <ejfox@ejfox.com>
+License:  MIT
+Homepage: https://github.com/ejfox/vulpes.nvim
+
+==============================================================================
+CONTENTS                                                      *vulpes-contents*
+
+    1. Introduction .......................... |vulpes-introduction|
+    2. Installation .......................... |vulpes-installation|
+    3. Usage ................................. |vulpes-usage|
+    4. Configuration ......................... |vulpes-configuration|
+    5. Palette ............................... |vulpes-palette|
+    6. Lualine ............................... |vulpes-lualine|
+    7. Extras ................................ |vulpes-extras|
+
+==============================================================================
+1. INTRODUCTION                                           *vulpes-introduction*
+
+Vulpes is a cyberpunk neon colorscheme designed for Neovim. It features
+vibrant pinks, teal comments, and high contrast for excellent readability.
+
+Features:
+- True color support (24-bit)
+- Dark and light variants
+- 100+ highlight groups
+- Treesitter and LSP support
+- Terminal extras included
+- Highly configurable
+
+==============================================================================
+2. INSTALLATION                                           *vulpes-installation*
+
+Using lazy.nvim: >lua
+    {
+      "ejfox/vulpes.nvim",
+      lazy = false,
+      priority = 1000,
+      config = function()
+        vim.cmd.colorscheme("vulpes")
+      end,
+    }
+<
+
+Using packer.nvim: >lua
+    use {
+      "ejfox/vulpes.nvim",
+      config = function()
+        vim.cmd.colorscheme("vulpes")
+      end
+    }
+<
+
+==============================================================================
+3. USAGE                                                         *vulpes-usage*
+
+Load the colorscheme: >lua
+    vim.cmd.colorscheme("vulpes")       -- dark theme
+    vim.cmd.colorscheme("vulpes-light") -- light theme
+<
+
+==============================================================================
+4. CONFIGURATION                                         *vulpes-configuration*
+
+Configure using the setup function: >lua
+    require("vulpes").setup({
+      transparent = false,
+      italic_comments = true,
+      italic_keywords = false,
+      bold_functions = false,
+      cursor_color = "base",
+      undercurl = true,
+      terminal_colors = true,
+    })
+<
+
+Or using vim.g variables: >lua
+    vim.g.vulpes_transparent = true
+<
+
+Options:
+
+*g:vulpes_transparent*
+    Use transparent background.
+    Default: false
+
+*g:vulpes_italic_comments*
+    Italicize comments.
+    Default: true
+
+*g:vulpes_italic_keywords*
+    Italicize keywords (if, for, while, etc).
+    Default: false
+
+*g:vulpes_bold_functions*
+    Bold function names.
+    Default: false
+
+*g:vulpes_cursor_color*
+    Cursor color: "base" (pink) or "white".
+    Default: "base"
+
+*g:vulpes_undercurl*
+    Use undercurl for spelling errors.
+    Default: true
+
+*g:vulpes_terminal_colors*
+    Apply vulpes ANSI colors to :terminal.
+    Default: true
+
+==============================================================================
+5. PALETTE                                                     *vulpes-palette*
+
+Access the color palette in Lua: >lua
+    local palette = require("vulpes.palette")
+    local colors = palette.get()  -- current variant
+    local dark = palette.dark     -- dark palette
+    local light = palette.light   -- light palette
+<
+
+==============================================================================
+6. LUALINE                                                     *vulpes-lualine*
+
+Use the included lualine theme: >lua
+    require("lualine").setup({
+      options = { theme = "vulpes" },
+    })
+<
+
+==============================================================================
+7. EXTRAS                                                       *vulpes-extras*
+
+Terminal colorschemes are in the `extras/` directory:
+
+    vulpes-ghostty.conf     Ghostty terminal
+    vulpes-kitty.conf       Kitty terminal
+    vulpes-alacritty.toml   Alacritty terminal
+    vulpes-wezterm.lua      WezTerm terminal
+    vulpes.tmux             tmux status line
+    vulpes-fzf.sh           fzf colors
+    vulpes-lazygit.yml      lazygit theme
+    vulpes-bat.tmTheme      bat syntax highlighter
+    vulpes-yazi.toml        Yazi file manager
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:

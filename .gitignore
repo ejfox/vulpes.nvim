@@ -1,0 +1,16 @@
+# Generated files
+doc/tags
+
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Lua
+*.luac
+
+# Testing
+.tests/

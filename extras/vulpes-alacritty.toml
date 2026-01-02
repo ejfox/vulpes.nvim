@@ -1,0 +1,40 @@
+# Vulpes colorscheme for Alacritty
+# https://github.com/ejfox/vulpes.nvim
+#
+# Installation:
+#   Copy to ~/.config/alacritty/themes/vulpes.toml
+#   Import in alacritty.toml:
+#     [general]
+#     import = ["~/.config/alacritty/themes/vulpes.toml"]
+
+[colors.primary]
+background = "#000000"
+foreground = "#f2cfdf"
+
+[colors.cursor]
+cursor = "#e60067"
+text = "#000000"
+
+[colors.selection]
+background = "#6b1a3d"
+text = "#ffffff"
+
+[colors.normal]
+black = "#0d0d0d"
+red = "#ff001e"
+green = "#ffffff"
+yellow = "#ffaa00"
+blue = "#ff0095"
+magenta = "#ff24ab"
+cyan = "#6eedf7"
+white = "#f2cfdf"
+
+[colors.bright]
+black = "#735865"
+red = "#ff2e2e"
+green = "#ffffff"
+yellow = "#ffcc00"
+blue = "#ff2daf"
+magenta = "#ff40c7"
+cyan = "#a0f7fc"
+white = "#ffffff"
