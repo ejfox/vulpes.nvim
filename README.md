@@ -1,49 +1,33 @@
 # vulpes.nvim
 
-A cyberpunk neon single-color(ish) scheme for Neovim (and many other TUIs) that tries to find a balance between vibes and utility.
+Neon pink/teal colorscheme for Neovim + matching configs for terminal emulators and TUI apps.
 
-<img width="1800" height="1131" alt="screenshot 2025-12-24 at 3 28 57 PM" src="https://github.com/user-attachments/assets/77a9fb8e-33d0-4562-83cb-0f8cc11b1499" />
+<img width="1800" height="1131" alt="screenshot 2025-12-24 at 3 28 57 PM" src="https://github.com/user-attachments/assets/77a9fb8e-33d0-4562-83cb-0f8cc11b1499" />
 
-<img width="1800" height="1169" alt="screenshot 2025-12-22 at 11 30 20 PM" src="https://github.com/user-attachments/assets/d8c588f0-c75d-4d2f-bf21-0837ac536ece" />
+<img width="1800" height="1169" alt="screenshot 2025-12-22 at 11 30 20 PM" src="https://github.com/user-attachments/assets/d8c588f0-c75d-4d2f-bf21-0837ac536ece" />
 
-## Features
-
-- **Complete TUI ecosystem** - One theme for your entire terminal workflow
-- **True color support** - Designed for modern terminals with 24-bit color
-- **Dark & Light variants** - Full theme for both backgrounds
-- **100+ highlight groups** - Comprehensive coverage for syntax, LSP, and plugins
-- **Treesitter support** - Rich semantic highlighting
-- **Plugin integrations** - Telescope, Snacks.nvim, nvim-cmp, GitSigns, Lualine, and many more
-- **Highly configurable** - Customize transparency, italics, cursor color, and more
-
-## The Full Stack
-
-Vulpes isn't just a Neovim theme - it's a complete visual system for your terminal. One cohesive look across everything:
+## Includes
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Terminal Emulators     TUI Apps           Dev Tools        │
-│  ─────────────────     ────────           ─────────         │
-│  ◆ Ghostty             ◆ Neovim           ◆ lazygit         │
-│  ◆ Kitty               ◆ tmux             ◆ fzf             │
-│  ◆ Alacritty           ◆ Yazi             ◆ bat             │
-│  ◆ WezTerm                                                  │
-└─────────────────────────────────────────────────────────────┘
+Neovim         Terminals       TUI Apps
+──────         ─────────       ────────
+◆ 100+ hlgroups   ◆ Ghostty       ◆ tmux
+◆ Treesitter      ◆ Kitty         ◆ lazygit
+◆ LSP             ◆ Alacritty     ◆ Yazi
+◆ Lualine         ◆ WezTerm       ◆ fzf
+◆ 15+ plugins                     ◆ bat
 ```
-
-All configs included in `extras/` - copy and go.
 
 ## Requirements
 
-- Neovim 0.8+ (0.9+ recommended for full Treesitter support)
+- Neovim 0.8+
 - `termguicolors` enabled
-- A terminal with true color support
+- True color terminal
 
-## Installation
-
-### [lazy.nvim](https://github.com/folke/lazy.nvim)
+## Install
 
 ```lua
+-- lazy.nvim
 {
   "ejfox/vulpes.nvim",
   lazy = false,
@@ -54,209 +38,129 @@ All configs included in `extras/` - copy and go.
 }
 ```
 
-### [packer.nvim](https://github.com/wbthomason/packer.nvim)
-
 ```lua
-use {
-  "ejfox/vulpes.nvim",
-  config = function()
-    vim.cmd.colorscheme("vulpes")
-  end
-}
+-- packer
+use { "ejfox/vulpes.nvim" }
 ```
 
-### [vim-plug](https://github.com/junegunn/vim-plug)
-
 ```vim
+" vim-plug
 Plug 'ejfox/vulpes.nvim'
-
-" After plug#end()
 colorscheme vulpes
 ```
 
-## Usage
+## Config
 
 ```lua
--- Dark theme (default)
-vim.cmd.colorscheme("vulpes")
-
--- Light theme
-vim.cmd.colorscheme("vulpes-light")
-```
-
-## Configuration
-
-Configure before loading the colorscheme:
-
-```lua
--- Using setup function (recommended)
 require("vulpes").setup({
-  transparent = false,        -- Use transparent background
-  italic_comments = true,     -- Italicize comments
-  italic_keywords = false,    -- Italicize keywords (if, for, while)
-  bold_functions = false,     -- Bold function names
-  cursor_color = "base",      -- "base" (pink) or "white"
-  undercurl = true,           -- Use undercurl for spelling (requires terminal support)
-  terminal_colors = true,     -- Apply vulpes colors to :terminal
+  transparent = false,
+  italic_comments = true,
+  italic_keywords = false,
+  bold_functions = false,
+  cursor_color = "base",  -- "base" (pink) or "white"
+  undercurl = true,
+  terminal_colors = true,
 })
 
 vim.cmd.colorscheme("vulpes")
 ```
 
-Or using vim.g variables:
+Or via `vim.g`:
 
 ```lua
 vim.g.vulpes_transparent = true
-vim.g.vulpes_italic_comments = false
 vim.cmd.colorscheme("vulpes")
 ```
 
-### Configuration Options
-
-| Option | Default | Description |
-|--------|---------|-------------|
-| `transparent` | `false` | Use transparent background |
-| `italic_comments` | `true` | Italicize comments |
-| `italic_keywords` | `false` | Italicize keywords |
-| `bold_functions` | `false` | Bold function names |
-| `cursor_color` | `"base"` | Cursor color: `"base"` (pink) or `"white"` |
-| `underline_search` | `false` | Underline search matches |
-| `undercurl` | `true` | Use undercurl for spelling errors |
-| `terminal_colors` | `true` | Set terminal ANSI colors |
+| Option | Default | |
+|--------|---------|---|
+| `transparent` | `false` | transparent bg |
+| `italic_comments` | `true` | |
+| `italic_keywords` | `false` | |
+| `bold_functions` | `false` | |
+| `cursor_color` | `"base"` | `"base"` or `"white"` |
+| `undercurl` | `true` | spelling errors |
+| `terminal_colors` | `true` | ANSI colors in :terminal |
 
 ## Lualine
 
-Vulpes includes a matching Lualine theme:
-
 ```lua
 require("lualine").setup({
-  options = {
-    theme = "vulpes",
-  },
+  options = { theme = "vulpes" },
 })
 ```
 
-## Terminal & TUI Themes
+## Extras
 
-The `extras/` directory contains ready-to-use configs for your entire setup:
+All in `extras/`:
 
-### Terminal Emulators
+### Terminals
 
-| App | File | Quick Install |
-|-----|------|---------------|
-| **Ghostty** | `vulpes-ghostty.conf` | `cp extras/vulpes-ghostty.conf ~/.config/ghostty/themes/vulpes` |
-| **Kitty** | `vulpes-kitty.conf` | Add `include themes/vulpes.conf` to kitty.conf |
-| **Alacritty** | `vulpes-alacritty.toml` | Import in alacritty.toml |
-| **WezTerm** | `vulpes-wezterm.lua` | `cp extras/vulpes-wezterm.lua ~/.config/wezterm/colors/` |
+| | File | Install |
+|-|------|---------|
+| Ghostty | `vulpes-ghostty.conf` | `cp extras/vulpes-ghostty.conf ~/.config/ghostty/themes/vulpes` |
+| Kitty | `vulpes-kitty.conf` | `include themes/vulpes.conf` in kitty.conf |
+| Alacritty | `vulpes-alacritty.toml` | import in alacritty.toml |
+| WezTerm | `vulpes-wezterm.lua` | `cp extras/vulpes-wezterm.lua ~/.config/wezterm/colors/` |
 
-### TUI Applications
+### TUIs
 
-| App | File | Quick Install |
-|-----|------|---------------|
-| **tmux** | `vulpes.tmux` | Add `source-file ~/.config/tmux/vulpes.tmux` |
-| **Yazi** | `vulpes-yazi.toml` | `cp extras/vulpes-yazi.toml ~/.config/yazi/theme.toml` |
-| **lazygit** | `vulpes-lazygit.yml` | Merge into `~/.config/lazygit/config.yml` |
-| **fzf** | `vulpes-fzf.sh` | `source` in your `.zshrc` / `.bashrc` |
-| **bat** | `vulpes-bat.tmTheme` | Copy to bat themes, run `bat cache --build` |
+| | File | Install |
+|-|------|---------|
+| tmux | `vulpes.tmux` | `source-file ~/.config/tmux/vulpes.tmux` |
+| Yazi | `vulpes-yazi.toml` | `cp extras/vulpes-yazi.toml ~/.config/yazi/theme.toml` |
+| lazygit | `vulpes-lazygit.yml` | merge into `~/.config/lazygit/config.yml` |
+| fzf | `vulpes-fzf.sh` | source in shell rc |
+| bat | `vulpes-bat.tmTheme` | copy to bat themes, `bat cache --build` |
 
-## Color Palette
+## Palette
 
-### Dark Theme
+### Dark
 
-| Role | Hex | Usage |
-|------|-----|-------|
-| Background | `#000000` | Editor background |
-| Foreground | `#f2cfdf` | Default text |
-| **Base/Accent** | `#e60067` | Primary accent (the vulpes pink) |
-| Comment | `#6eedf7` | Comments (teal - signature look) |
-| Keyword | `#ff1aca` | Language keywords |
-| String | `#f5f5f5` | String literals |
-| Function | `#ffffff` | Function names |
-| Type | `#ff24ab` | Type names |
-| Number | `#ff33c5` | Numeric literals |
-| Boolean | `#ff1043` | true/false |
-| Variable | `#ff0a89` | Variable names |
-| Property | `#ff0a91` | Object properties |
-| Operator | `#f92c7a` | Operators |
-| Error | `#a0f7fc` | Errors (inverted teal) |
-| Warning | `#ffaa00` | Warnings |
-| Info | `#ff0095` | Information |
-| Hint | `#ff4d9d` | Hints |
+| | Hex | |
+|-|-----|---|
+| bg | `#000000` | |
+| fg | `#f2cfdf` | |
+| base | `#e60067` | accent pink |
+| comment | `#6eedf7` | teal |
+| keyword | `#ff1aca` | |
+| string | `#f5f5f5` | |
+| func | `#ffffff` | |
+| type | `#ff24ab` | |
+| number | `#ff33c5` | |
+| boolean | `#ff1043` | |
+| variable | `#ff0a89` | |
+| property | `#ff0a91` | |
+| operator | `#f92c7a` | |
+| error | `#a0f7fc` | inverted teal |
+| warning | `#ffaa00` | |
 
-```
-  Background   Foreground   Base/Accent     Comment      Keyword
-    #000000      #f2cfdf      #e60067       #6eedf7      #ff1aca
-       ██          ██           ██            ██           ██
+### ANSI
 
-     String     Function       Type         Number       Boolean
-    #f5f5f5      #ffffff      #ff24ab       #ff33c5      #ff1043
-       ██          ██           ██            ██           ██
+| | Normal | Bright |
+|-|--------|--------|
+| black | `#0d0d0d` | `#735865` |
+| red | `#ff001e` | `#ff2e2e` |
+| green | `#ffffff` | `#ffffff` |
+| yellow | `#ffaa00` | `#ffcc00` |
+| blue | `#ff0095` | `#ff2daf` |
+| magenta | `#ff24ab` | `#ff40c7` |
+| cyan | `#6eedf7` | `#a0f7fc` |
+| white | `#f2cfdf` | `#ffffff` |
 
-    Variable    Property     Operator        Error       Warning
-    #ff0a89      #ff0a91      #f92c7a       #a0f7fc      #ffaa00
-       ██          ██           ██            ██           ██
-```
+## Plugins
 
-### Terminal Colors (ANSI)
+Highlight groups for: Telescope, Snacks.nvim, nvim-cmp, GitSigns, Which-key, BufferLine, Neo-tree, Lazy.nvim, Mason, Noice, nvim-notify
 
-| Color | Normal | Bright |
-|-------|--------|--------|
-| Black | `#0d0d0d` | `#735865` |
-| Red | `#ff001e` | `#ff2e2e` |
-| Green | `#ffffff` | `#ffffff` |
-| Yellow | `#ffaa00` | `#ffcc00` |
-| Blue | `#ff0095` | `#ff2daf` |
-| Magenta | `#ff24ab` | `#ff40c7` |
-| Cyan | `#6eedf7` | `#a0f7fc` |
-| White | `#f2cfdf` | `#ffffff` |
-
-## Plugin Support
-
-Vulpes includes highlight groups for:
-
-- **LSP** - Diagnostics, semantic tokens, document highlights
-- **Treesitter** - Full semantic highlighting
-- **Telescope.nvim** - Fuzzy finder
-- **Snacks.nvim** - Picker, indent guides, explorer
-- **nvim-cmp** - Completion menu
-- **GitSigns** - Git gutter signs
-- **Which-key** - Keybinding hints
-- **BufferLine** - Tab/buffer line
-- **Neo-tree** - File explorer
-- **Lazy.nvim** - Plugin manager UI
-- **Mason** - LSP installer UI
-- **Noice** - UI enhancements
-- **nvim-notify** - Notifications
-
-## Accessing the Palette
-
-You can access vulpes colors in your own config:
+## API
 
 ```lua
 local palette = require("vulpes.palette")
-
--- Get current variant's colors
-local colors = palette.get()
-print(colors.base)  -- "#e60067"
-
--- Get specific variant
-local dark = palette.dark
-local light = palette.light
+local colors = palette.get()     -- current variant
+local dark = palette.dark        -- dark palette
+local light = palette.light      -- light palette
 ```
-
-## Philosophy
-
-Vulpes is designed around a few core principles:
-
-1. **Readability first** - High contrast where it matters, subtle elsewhere
-2. **Semantic color** - Colors convey meaning, not just decoration
-3. **Terminal-native** - Born in the terminal, designed for the glow
-4. **Minimal distraction** - The code is the star, the theme is the stage
-
-## Credits
-
-Vulpes is part of the [vulpes-theme-lab](https://github.com/ejfox/vulpes-theme-lab) ecosystem.
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+MIT
