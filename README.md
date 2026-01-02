@@ -139,18 +139,38 @@ Matching colorschemes for your terminal and tools are in the `extras/` directory
 
 ### Dark Theme
 
-| Color | Hex | Usage |
-|-------|-----|-------|
-| Background | `#000000` | Editor background |
-| Foreground | `#f2cfdf` | Default text |
-| Base/Accent | `#e60067` | Primary accent (the vulpes pink) |
-| Comment | `#6eedf7` | Comments (teal - signature look) |
-| Keyword | `#ff1aca` | Language keywords |
-| String | `#f5f5f5` | String literals |
-| Function | `#ffffff` | Function names |
-| Type | `#ff24ab` | Type names |
-| Error | `#a0f7fc` | Errors (inverted teal for visibility) |
-| Warning | `#ffaa00` | Warnings |
+| Role | Color | Hex | Usage |
+|------|-------|-----|-------|
+| Background | ![#000000](https://via.placeholder.com/16/000000/000000?text=+) | `#000000` | Editor background |
+| Foreground | ![#f2cfdf](https://via.placeholder.com/16/f2cfdf/f2cfdf?text=+) | `#f2cfdf` | Default text |
+| Base/Accent | ![#e60067](https://via.placeholder.com/16/e60067/e60067?text=+) | `#e60067` | Primary accent (the vulpes pink) |
+| Comment | ![#6eedf7](https://via.placeholder.com/16/6eedf7/6eedf7?text=+) | `#6eedf7` | Comments (teal - signature look) |
+| Keyword | ![#ff1aca](https://via.placeholder.com/16/ff1aca/ff1aca?text=+) | `#ff1aca` | Language keywords |
+| String | ![#f5f5f5](https://via.placeholder.com/16/f5f5f5/f5f5f5?text=+) | `#f5f5f5` | String literals |
+| Function | ![#ffffff](https://via.placeholder.com/16/ffffff/ffffff?text=+) | `#ffffff` | Function names |
+| Type | ![#ff24ab](https://via.placeholder.com/16/ff24ab/ff24ab?text=+) | `#ff24ab` | Type names |
+| Number | ![#ff33c5](https://via.placeholder.com/16/ff33c5/ff33c5?text=+) | `#ff33c5` | Numeric literals |
+| Boolean | ![#ff1043](https://via.placeholder.com/16/ff1043/ff1043?text=+) | `#ff1043` | true/false |
+| Variable | ![#ff0a89](https://via.placeholder.com/16/ff0a89/ff0a89?text=+) | `#ff0a89` | Variable names |
+| Property | ![#ff0a91](https://via.placeholder.com/16/ff0a91/ff0a91?text=+) | `#ff0a91` | Object properties |
+| Operator | ![#f92c7a](https://via.placeholder.com/16/f92c7a/f92c7a?text=+) | `#f92c7a` | Operators (+, -, =, etc) |
+| Error | ![#a0f7fc](https://via.placeholder.com/16/a0f7fc/a0f7fc?text=+) | `#a0f7fc` | Errors (inverted teal) |
+| Warning | ![#ffaa00](https://via.placeholder.com/16/ffaa00/ffaa00?text=+) | `#ffaa00` | Warnings |
+| Info | ![#ff0095](https://via.placeholder.com/16/ff0095/ff0095?text=+) | `#ff0095` | Information |
+| Hint | ![#ff4d9d](https://via.placeholder.com/16/ff4d9d/ff4d9d?text=+) | `#ff4d9d` | Hints |
+
+### Terminal Colors (ANSI)
+
+| Color | Normal | Bright |
+|-------|--------|--------|
+| Black | ![#0d0d0d](https://via.placeholder.com/16/0d0d0d/0d0d0d?text=+) `#0d0d0d` | ![#735865](https://via.placeholder.com/16/735865/735865?text=+) `#735865` |
+| Red | ![#ff001e](https://via.placeholder.com/16/ff001e/ff001e?text=+) `#ff001e` | ![#ff2e2e](https://via.placeholder.com/16/ff2e2e/ff2e2e?text=+) `#ff2e2e` |
+| Green | ![#ffffff](https://via.placeholder.com/16/ffffff/ffffff?text=+) `#ffffff` | ![#ffffff](https://via.placeholder.com/16/ffffff/ffffff?text=+) `#ffffff` |
+| Yellow | ![#ffaa00](https://via.placeholder.com/16/ffaa00/ffaa00?text=+) `#ffaa00` | ![#ffcc00](https://via.placeholder.com/16/ffcc00/ffcc00?text=+) `#ffcc00` |
+| Blue | ![#ff0095](https://via.placeholder.com/16/ff0095/ff0095?text=+) `#ff0095` | ![#ff2daf](https://via.placeholder.com/16/ff2daf/ff2daf?text=+) `#ff2daf` |
+| Magenta | ![#ff24ab](https://via.placeholder.com/16/ff24ab/ff24ab?text=+) `#ff24ab` | ![#ff40c7](https://via.placeholder.com/16/ff40c7/ff40c7?text=+) `#ff40c7` |
+| Cyan | ![#6eedf7](https://via.placeholder.com/16/6eedf7/6eedf7?text=+) `#6eedf7` | ![#a0f7fc](https://via.placeholder.com/16/a0f7fc/a0f7fc?text=+) `#a0f7fc` |
+| White | ![#f2cfdf](https://via.placeholder.com/16/f2cfdf/f2cfdf?text=+) `#f2cfdf` | ![#ffffff](https://via.placeholder.com/16/ffffff/ffffff?text=+) `#ffffff` |
 
 ## Plugin Support
 
