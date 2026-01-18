@@ -58,10 +58,11 @@ M.dark = {
   linenr = "#735865",
   border = "#e60067",
 
-  -- Git/Diff
-  git_add = "#ffffff",
+  -- Git/Diff (HCL-harmonized with vulpes base hue ~340°)
+  git_add = "#b4d455",      -- Warm chartreuse (Hue ~85°)
   git_change = "#ffaa00",
-  git_delete = "#ff001e",
+  git_delete = "#c44569",   -- Dusty rose-burgundy (Hue ~350°)
+  diff_text = "#e8b4c8",    -- Soft pink for changed text
 
   -- Terminal colors (ANSI)
   black = "#0d0d0d",
@@ -136,10 +137,11 @@ M.light = {
   linenr = "#a08090",
   border = "#c50058",
 
-  -- Git/Diff
-  git_add = "#006600",
+  -- Git/Diff (HCL-harmonized with vulpes base hue ~340°, for light bg)
+  git_add = "#5a7a20",      -- Dark chartreuse (Hue ~85°)
   git_change = "#b87700",
-  git_delete = "#cc0000",
+  git_delete = "#9e3050",   -- Dark dusty rose (Hue ~350°)
+  diff_text = "#8a4060",    -- Muted rose for changed text
 
   -- Terminal colors (ANSI)
   black = "#1a0a10",
