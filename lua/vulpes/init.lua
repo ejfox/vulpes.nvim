@@ -265,8 +265,8 @@ local function set_treesitter_highlights(c, cfg)
   hi("@string", { link = "String" })
   hi("@string.documentation", { fg = c.string })
   hi("@string.regex", { fg = c.warning })
-  hi("@string.escape", { fg = c.base })
-  hi("@string.special", { fg = c.base })
+  hi("@string.escape", { fg = c.number })   -- amber: \n is the value 10 in a string costume
+  hi("@string.special", { fg = c.number })  -- amber: special string values = literal values
   hi("@string.special.symbol", { fg = c.constant })
   hi("@string.special.url", { fg = c.info, underline = true })
 
@@ -313,8 +313,8 @@ local function set_treesitter_highlights(c, cfg)
   hi("@type.qualifier", { fg = c.keyword, italic = kw_italic })
 
   -- Attributes & Properties
-  hi("@attribute", { fg = c.base })
-  hi("@attribute.builtin", { fg = c.builtin })
+  hi("@attribute", { fg = c.type })         -- cyan: decorators annotate the type system
+  hi("@attribute.builtin", { fg = c.type }) -- cyan: same cluster
   hi("@property", { fg = c.property })
   hi("@field", { fg = c.property })
 

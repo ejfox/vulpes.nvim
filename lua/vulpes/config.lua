@@ -15,7 +15,7 @@ M.defaults = {
   italic_keywords = false,
 
   -- Enable bold functions
-  bold_functions = false,
+  bold_functions = true,
 
   -- Cursor color: "base" (pink) or "white"
   cursor_color = "base",
