@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>vulpes.nvim — a neon colorscheme grounded in real light</title>
+<meta name="description" content="Vulpes is a Neovim colorscheme whose every color is derived from OKLCH color math and the physics of real light sources: neon gas, Nixie tubes, vacuum fluorescent displays, P31 radar phosphor." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="vulpes.nvim" />
+<meta property="og:description" content="Four hues. All physical. A Neovim colorscheme derived from OKLCH and the physics of real light." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    /* vulpes 2027 — dark (the canonical) */
+    --bg:    #000000;  --bg-alt: #0d0d0d;  --line: #1a1418;
+    --fg:    #f2cfdf;  --dim:    #735865;
+    --c:     #6eedf7;  /* comment  — P31 phosphor 202° */
+    --kw:    #ff1bca;  /* keyword  — neon pink 341°    */
+    --fn:    #ffffff;  /* function — white            */
+    --str:   #f5f5f5;  /* string   — near-white       */
+    --num:   #f99600;  /* number   — Nixie amber 65°  */
+    --bool:  #db8925;  /* const    — aviation gold     */
+    --type:  #00d5b4;  /* type     — VFD cyan 176°    */
+    --ns:    #44a28d;  /* namespace— VFD dim          */
+    --var:   #ae498f;  /* variable — pink mid         */
+    --par:   #d048a9;  /* parameter— pink hi-mid      */
+    --prop:  #8c4876;  /* property — pink lo-mid      */
+    --op:    #6b445d;  /* operator — pink ghost       */
+    --pun:   #735865;  /* punct    — mounting hardware */
+    --base:  #e60067;  /* brand                       */
+    --err:   #a0f7fc;  --warn: #ffaa00;
+    --shadow: 0 0 40px rgba(255,27,202,0.06);
+  }
+  body.light {
+    /* vulpes 2027 — light (same hues, L inverted) */
+    --bg:    #fefefe;  --bg-alt: #f5f0f2;  --line: #ece2e8;
+    --fg:    #1a0a10;  --dim:    #a08090;
+    --c:     #008b8f;
+    --kw:    #900071;
+    --fn:    #1a0a10;
+    --str:   #1a0a10;
+    --num:   #864e00;
+    --bool:  #965800;
+    --type:  #006756;
+    --ns:    #237967;
+    --var:   #9f4c85;
+    --par:   #9e2f7f;
+    --prop:  #a0638b;
+    --op:    #9e7990;
+    --pun:   #a08090;
+    --base:  #c50058;
+    --err:   #008b8f;  --warn: #b87700;
+    --shadow: 0 0 40px rgba(144,0,113,0.05);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Monaspace Neon", "Vulpes Mono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.5s ease, color 0.5s ease;
+  }
+  a { color: var(--kw); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ::selection { background: color-mix(in srgb, var(--base) 30%, transparent); color: var(--fg); }
+
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+
+  /* ── theme toggle ─────────────────────────────── */
+  .toggle {
+    position: fixed; top: 20px; right: 20px; z-index: 50;
+    background: var(--bg-alt); color: var(--dim);
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 8px 14px; font: inherit; font-size: 12px;
+    cursor: pointer; transition: all 0.2s;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .toggle:hover { color: var(--fg); border-color: var(--kw); }
+
+  /* ── hero ─────────────────────────────────────── */
+  header { padding: 120px 0 70px; }
+  .wordmark {
+    font-size: clamp(64px, 14vw, 150px); font-weight: 700;
+    line-height: 0.9; letter-spacing: -0.04em; color: var(--fg);
+  }
+  .wordmark .blink { color: var(--kw); animation: blink 1.2s steps(2) infinite; }
+  @keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
+  .tagline { font-size: clamp(20px, 3vw, 28px); color: var(--fg); margin-top: 28px; max-width: 640px; line-height: 1.4; }
+  .subtagline { font-size: 16px; color: var(--dim); margin-top: 18px; max-width: 620px; }
+  .hero-actions { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    border: 1px solid var(--kw); color: var(--fg);
+    background: color-mix(in srgb, var(--kw) 14%, transparent);
+    padding: 12px 24px; border-radius: 10px; font-size: 15px; font-weight: 500;
+    transition: all 0.2s;
+  }
+  .btn:hover { background: color-mix(in srgb, var(--kw) 26%, transparent); text-decoration: none; }
+  .btn.ghost { border-color: var(--line); background: transparent; color: var(--dim); }
+  .btn.ghost:hover { color: var(--fg); border-color: var(--fg); }
+
+  /* ── sections ─────────────────────────────────── */
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  .eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: var(--base); margin-bottom: 14px; }
+  h2 { font-size: clamp(30px, 5vw, 44px); font-weight: 700; letter-spacing: -0.02em; color: var(--fg); margin-bottom: 18px; }
+  .lead { font-size: 18px; color: var(--dim); max-width: 680px; margin-bottom: 40px; line-height: 1.55; }
+
+  /* ── code block ───────────────────────────────── */
+  .code {
+    background: var(--bg-alt); border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden; box-shadow: var(--shadow);
+  }
+  .code-bar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 16px; border-bottom: 1px solid var(--line);
+  }
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .code-file { margin-left: 10px; font-size: 12px; color: var(--dim); }
+  pre { padding: 22px 24px; overflow-x: auto; font-size: 14.5px; line-height: 1.75; tab-size: 2; }
+  pre.big { font-size: clamp(13px, 1.9vw, 16px); }
+
+  .tok-c   { color: var(--c);    font-style: italic; }
+  .tok-kw  { color: var(--kw);  }
+  .tok-fn  { color: var(--fn);   font-weight: 700; }
+  .tok-str { color: var(--str); }
+  .tok-num { color: var(--num); }
+  .tok-bool{ color: var(--bool);}
+  .tok-type{ color: var(--type);}
+  .tok-ns  { color: var(--ns);  }
+  .tok-var { color: var(--var); }
+  .tok-par { color: var(--par);  font-style: italic; }
+  .tok-prop{ color: var(--prop);}
+  .tok-op  { color: var(--op);  }
+  .tok-pun { color: var(--pun); }
+
+  /* ── four-hue cards ───────────────────────────── */
+  .clusters { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+  .cluster { border: 1px solid var(--line); border-radius: 14px; padding: 22px; background: var(--bg-alt); }
+  .cluster-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cluster-orb { width: 16px; height: 16px; border-radius: 50%; }
+  .cluster-hue { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+  .cluster h3 { font-size: 17px; color: var(--fg); margin-bottom: 6px; }
+  .cluster p { font-size: 13px; color: var(--dim); line-height: 1.5; margin-bottom: 14px; }
+  .cluster-row { display: flex; align-items: center; justify-content: space-between; padding: 3px 0; }
+  .cluster-row .lbl { font-size: 12px; color: var(--dim); }
+  .cluster-row .swab { display: flex; align-items: center; gap: 7px; }
+  .cluster-row .chip { width: 12px; height: 12px; border-radius: 3px; }
+  .cluster-row .hex { font-size: 11.5px; }
+
+  /* ── palette grid ─────────────────────────────── */
+  .palette { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+  .pal { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .pal .sw { height: 56px; }
+  .pal .meta { padding: 8px 10px; background: var(--bg-alt); }
+  .pal .meta .n { font-size: 12px; color: var(--fg); }
+  .pal .meta .h { font-size: 11px; color: var(--dim); }
+
+  /* ── ecosystem ────────────────────────────────── */
+  .eco { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+  .eco-item { border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; background: var(--bg-alt); }
+  .eco-item .t { color: var(--fg); font-size: 15px; margin-bottom: 4px; }
+  .eco-item .d { color: var(--dim); font-size: 12.5px; }
+
+  /* ── derive section ───────────────────────────── */
+  .derive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+  @media (max-width: 760px) { .derive-grid { grid-template-columns: 1fr; } }
+
+  footer { border-top: 1px solid var(--line); padding: 50px 0 80px; color: var(--dim); font-size: 13px; }
+  footer .row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  footer a { color: var(--dim); }
+  footer a:hover { color: var(--fg); }
+</style>
+</head>
+<body>
+
+<button class="toggle" id="toggle">◐ light</button>
+
+<header>
+  <div class="wrap">
+    <div class="wordmark">vulpes<span class="blink">_</span></div>
+    <p class="tagline">A Neovim colorscheme grounded in real light.</p>
+    <p class="subtagline">
+      Every color is derived from OKLCH color math and the physics of actual light sources —
+      neon gas, Nixie tubes, vacuum fluorescent displays, P31 radar phosphor. No hand-picked hex.
+    </p>
+    <div class="hero-actions">
+      <a class="btn" href="#install">Install</a>
+      <a class="btn ghost" href="https://github.com/ejfox/vulpes.nvim">GitHub →</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── THE MONEY SHOT: real theme on real code ── -->
+<section style="border-top:none; padding-top:0;">
+  <div class="wrap">
+    <div class="code">
+      <div class="code-bar">
+        <span class="dot" style="background:#ff5f57"></span>
+        <span class="dot" style="background:#febc2e"></span>
+        <span class="dot" style="background:#28c840"></span>
+        <span class="code-file">server.ts</span>
+      </div>
+<pre class="big"><span class="tok-kw">import</span> <span class="tok-pun">{</span> <span class="tok-var">createServer</span> <span class="tok-pun">}</span> <span class="tok-kw">from</span> <span class="tok-str">"node:http"</span>
+<span class="tok-kw">const</span> <span class="tok-bool">PORT</span> <span class="tok-op">=</span> <span class="tok-num">8080</span>
+
+<span class="tok-kw">interface</span> <span class="tok-type">Vulpes</span> <span class="tok-pun">{</span>
+  <span class="tok-prop">name</span><span class="tok-pun">:</span> <span class="tok-type">string</span>
+  <span class="tok-prop">hues</span><span class="tok-pun">:</span> <span class="tok-type">number</span><span class="tok-pun">[]</span>
+  <span class="tok-prop">active</span><span class="tok-pun">:</span> <span class="tok-type">boolean</span>
+<span class="tok-pun">}</span>
+
+<span class="tok-c">// derive every color from physical light</span>
+<span class="tok-kw">function</span> <span class="tok-fn">render</span><span class="tok-pun">(</span><span class="tok-par">theme</span><span class="tok-pun">:</span> <span class="tok-type">Vulpes</span><span class="tok-pun">):</span> <span class="tok-type">string</span> <span class="tok-pun">{</span>
+  <span class="tok-kw">const</span> <span class="tok-var">glow</span> <span class="tok-op">=</span> <span class="tok-var">theme</span><span class="tok-pun">.</span><span class="tok-prop">hues</span><span class="tok-pun">.</span><span class="tok-fn">map</span><span class="tok-pun">((</span><span class="tok-par">h</span><span class="tok-pun">)</span> <span class="tok-op">=&gt;</span> <span class="tok-var">h</span> <span class="tok-op">*</span> <span class="tok-num">1.5</span><span class="tok-pun">)</span>
+  <span class="tok-kw">return</span> <span class="tok-str">`vulpes(</span><span class="tok-pun">${</span><span class="tok-var">glow</span><span class="tok-pun">.</span><span class="tok-fn">join</span><span class="tok-pun">(</span><span class="tok-str">", "</span><span class="tok-pun">)}</span><span class="tok-str">)`</span>
+<span class="tok-pun">}</span></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ── four hue clusters ── -->
+<section id="palette">
+  <div class="wrap">
+    <p class="eyebrow">the system</p>
+    <h2>Four hues. All physical.</h2>
+    <p class="lead">
+      Most themes scatter a dozen arbitrary colors across the spectrum. Vulpes uses four hue
+      clusters, each one earned from a real light source. Brightness within a cluster encodes
+      importance — same hue, less glow means less signal.
+    </p>
+    <div class="clusters">
+
+      <div class="cluster">
+        <div class="cluster-head">
+          <span class="cluster-orb" style="background:#ff1bca; box-shadow:0 0 12px #ff1bca99"></span>
+          <span class="cluster-hue" style="color:#ff1bca">H = 341°</span>
+        </div>
+        <h3>Argon / Neon</h3>
+        <p>Control flow. Keywords, tags, headings. Neon signage is upright and directional.</p>
+        <div class="cluster-row"><span class="lbl">keyword</span><span class="swab"><span class="chip" style="background:#ff1bca"></span><span class="hex" style="color:#ff1bca">#ff1bca</span></span></div>
+        <div class="cluster-row"><span class="lbl">parameter</span><span class="swab"><span class="chip" style="background:#d048a9"></span><span class="hex" style="color:#d048a9">#d048a9</span></span></div>
+        <div class="cluster-row"><span class="lbl">variable</span><span class="swab"><span class="chip" style="background:#ae498f"></span><span class="hex" style="color:#ae498f">#ae498f</span></span></div>
+        <div class="cluster-row"><span class="lbl">property</span><span class="swab"><span class="chip" style="background:#8c4876"></span><span class="hex" style="color:#8c4876">#8c4876</span></span></div>
+        <div class="cluster-row"><span class="lbl">operator</span><span class="swab"><span class="chip" style="background:#6b445d"></span><span class="hex" style="color:#6b445d">#6b445d</span></span></div>
+      </div>
+
+      <div class="cluster">
+        <div class="cluster-head">
+          <span class="cluster-orb" style="background:#f99600; box-shadow:0 0 12px #f9960099"></span>
+          <span class="cluster-hue" style="color:#f99600">H = 65°</span>
+        </div>
+        <h3>Nixie Tube</h3>
+        <p>Literal values you read. Numbers, booleans, constants. Neon gas glowing at 585–703nm.</p>
+        <div class="cluster-row"><span class="lbl">number</span><span class="swab"><span class="chip" style="background:#f99600"></span><span class="hex" style="color:#f99600">#f99600</span></span></div>
+        <div class="cluster-row"><span class="lbl">macro</span><span class="swab"><span class="chip" style="background:#f99600"></span><span class="hex" style="color:#f99600">#f99600</span></span></div>
+        <div class="cluster-row"><span class="lbl">boolean</span><span class="swab"><span class="chip" style="background:#db8925"></span><span class="hex" style="color:#db8925">#db8925</span></span></div>
+        <div class="cluster-row"><span class="lbl">constant</span><span class="swab"><span class="chip" style="background:#db8925"></span><span class="hex" style="color:#db8925">#db8925</span></span></div>
+      </div>
+
+      <div class="cluster">
+        <div class="cluster-head">
+          <span class="cluster-orb" style="background:#00d5b4; box-shadow:0 0 12px #00d5b499"></span>
+          <span class="cluster-hue" style="color:#00d5b4">H = 176°</span>
+        </div>
+        <h3>VFD Display</h3>
+        <p>The type system. Active structure. ZnO:Zn phosphor at ~505nm — clock-radio crisp.</p>
+        <div class="cluster-row"><span class="lbl">type</span><span class="swab"><span class="chip" style="background:#00d5b4"></span><span class="hex" style="color:#00d5b4">#00d5b4</span></span></div>
+        <div class="cluster-row"><span class="lbl">builtin</span><span class="swab"><span class="chip" style="background:#00d5b4"></span><span class="hex" style="color:#00d5b4">#00d5b4</span></span></div>
+        <div class="cluster-row"><span class="lbl">namespace</span><span class="swab"><span class="chip" style="background:#44a28d"></span><span class="hex" style="color:#44a28d">#44a28d</span></span></div>
+      </div>
+
+      <div class="cluster">
+        <div class="cluster-head">
+          <span class="cluster-orb" style="background:#6eedf7; box-shadow:0 0 12px #6eedf799"></span>
+          <span class="cluster-hue" style="color:#6eedf7">H = 202°</span>
+        </div>
+        <h3>P31 Phosphor</h3>
+        <p>Comments &amp; content. The afterglow on a radar screen — the persistence of past thought.</p>
+        <div class="cluster-row"><span class="lbl">comment</span><span class="swab"><span class="chip" style="background:#6eedf7"></span><span class="hex" style="color:#6eedf7">#6eedf7</span></span></div>
+        <div class="cluster-row"><span class="lbl">function</span><span class="swab"><span class="chip" style="background:#ffffff; border:1px solid #735865"></span><span class="hex" style="color:#ffffff">#ffffff</span></span></div>
+        <div class="cluster-row"><span class="lbl">string</span><span class="swab"><span class="chip" style="background:#f5f5f5; border:1px solid #735865"></span><span class="hex" style="color:#f5f5f5">#f5f5f5</span></span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── install ── -->
+<section id="install">
+  <div class="wrap">
+    <p class="eyebrow">get it</p>
+    <h2>Install</h2>
+    <p class="lead">Lua, lazy.nvim. Ships dark and light — same hues, lightness inverted for white backgrounds.</p>
+    <div class="code">
+      <div class="code-bar">
+        <span class="dot" style="background:#ff5f57"></span>
+        <span class="dot" style="background:#febc2e"></span>
+        <span class="dot" style="background:#28c840"></span>
+        <span class="code-file">~/.config/nvim/lua/plugins/vulpes.lua</span>
+      </div>
+<pre><span class="tok-c">-- lazy.nvim</span>
+<span class="tok-kw">return</span> <span class="tok-pun">{</span>
+  <span class="tok-str">"ejfox/vulpes.nvim"</span><span class="tok-pun">,</span>
+  <span class="tok-prop">priority</span> <span class="tok-op">=</span> <span class="tok-num">1000</span><span class="tok-pun">,</span>
+  <span class="tok-prop">config</span> <span class="tok-op">=</span> <span class="tok-kw">function</span><span class="tok-pun">()</span>
+    <span class="tok-fn">require</span><span class="tok-pun">(</span><span class="tok-str">"vulpes"</span><span class="tok-pun">).</span><span class="tok-fn">setup</span><span class="tok-pun">({</span>
+      <span class="tok-prop">italic_comments</span> <span class="tok-op">=</span> <span class="tok-bool">true</span><span class="tok-pun">,</span>
+      <span class="tok-prop">bold_functions</span>  <span class="tok-op">=</span> <span class="tok-bool">true</span><span class="tok-pun">,</span>
+    <span class="tok-pun">})</span>
+    <span class="tok-var">vim</span><span class="tok-pun">.</span><span class="tok-prop">cmd</span><span class="tok-pun">.</span><span class="tok-fn">colorscheme</span><span class="tok-pun">(</span><span class="tok-str">"vulpes"</span><span class="tok-pun">)</span>
+  <span class="tok-kw">end</span><span class="tok-pun">,</span>
+<span class="tok-pun">}</span></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ── ecosystem ── -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">the whole environment</p>
+    <h2>Beyond the editor</h2>
+    <p class="lead">The palette ships matching configs so your terminal, pager, and statusline speak the same four hues. Find them in <code style="color:var(--type)">extras/</code>.</p>
+    <div class="eco">
+      <div class="eco-item"><div class="t">Ghostty</div><div class="d">vulpes-ghostty.conf</div></div>
+      <div class="eco-item"><div class="t">Kitty</div><div class="d">vulpes-kitty.conf</div></div>
+      <div class="eco-item"><div class="t">Alacritty</div><div class="d">vulpes-alacritty.toml</div></div>
+      <div class="eco-item"><div class="t">WezTerm</div><div class="d">vulpes-wezterm.lua</div></div>
+      <div class="eco-item"><div class="t">bat</div><div class="d">vulpes-bat.tmTheme</div></div>
+      <div class="eco-item"><div class="t">lualine</div><div class="d">themes/vulpes.lua</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── derive / craft ── -->
+<section>
+  <div class="wrap">
+    <div class="derive-grid">
+      <div>
+        <p class="eyebrow">the craft</p>
+        <h2>No improvised hex.</h2>
+        <p class="lead" style="margin-bottom:18px">
+          Colors aren't eyeballed. They're computed. Each cluster has a fixed OKLCH hue;
+          brightness tiers are L/C parameters. Edit the anchors, run the script, paste the output.
+          Same hue family, mathematically consistent every time.
+        </p>
+        <a class="btn ghost" href="https://github.com/ejfox/vulpes.nvim/blob/main/palette-derive.py">palette-derive.py →</a>
+      </div>
+      <div class="code">
+        <div class="code-bar">
+          <span class="dot" style="background:#ff5f57"></span>
+          <span class="dot" style="background:#febc2e"></span>
+          <span class="dot" style="background:#28c840"></span>
+          <span class="code-file">palette-derive.py</span>
+        </div>
+<pre><span class="tok-c"># physical hue anchors</span>
+<span class="tok-var">H_PINK</span>  <span class="tok-op">=</span> <span class="tok-num">341.0</span>  <span class="tok-c"># neon keyword</span>
+<span class="tok-var">H_AMBER</span> <span class="tok-op">=</span> <span class="tok-num">65.0</span>   <span class="tok-c"># Nixie tube</span>
+<span class="tok-var">H_VFD</span>   <span class="tok-op">=</span> <span class="tok-num">176.0</span>  <span class="tok-c"># ZnO:Zn 505nm</span>
+<span class="tok-var">H_TEAL</span>  <span class="tok-op">=</span> <span class="tok-num">202.3</span>  <span class="tok-c"># P31 — pinned</span>
+
+<span class="tok-var">PINK</span> <span class="tok-op">=</span> <span class="tok-pun">{</span>
+  <span class="tok-str">"keyword"</span><span class="tok-pun">:</span>   <span class="tok-pun">(</span><span class="tok-num">0.679</span><span class="tok-pun">,</span> <span class="tok-num">0.284</span><span class="tok-pun">),</span>
+  <span class="tok-str">"variable"</span><span class="tok-pun">:</span>  <span class="tok-pun">(</span><span class="tok-num">0.560</span><span class="tok-pun">,</span> <span class="tok-num">0.155</span><span class="tok-pun">),</span>
+  <span class="tok-str">"operator"</span><span class="tok-pun">:</span>  <span class="tok-pun">(</span><span class="tok-num">0.440</span><span class="tok-pun">,</span> <span class="tok-num">0.065</span><span class="tok-pun">),</span>
+<span class="tok-pun">}</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div>vulpes.nvim — MIT — <span style="color:var(--base)">a neon colorscheme grounded in real light</span></div>
+      <div style="display:flex; gap:20px;">
+        <a href="https://github.com/ejfox/vulpes.nvim">GitHub</a>
+        <a href="https://github.com/ejfox/vulpes.nvim/blob/main/2027-PALETTE.md">design doc</a>
+        <a href="https://ejfox.com">ejfox.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('toggle');
+  const setLight = (light) => {
+    document.body.classList.toggle('light', light);
+    btn.textContent = light ? '◑ dark' : '◐ light';
+  };
+  // honor ?light / #light for shareable + verifiable theme state
+  const wantLight = location.hash === '#light' ||
+    new URLSearchParams(location.search).has('light');
+  setLight(wantLight);
+  btn.addEventListener('click', () => {
+    const next = !document.body.classList.contains('light');
+    setLight(next);
+    history.replaceState(null, '', next ? '#light' : '#');
+  });
+</script>
+
+</body>
+</html>
