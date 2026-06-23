@@ -13,7 +13,7 @@ local function get_theme()
       c = { fg = c.fg_dim, bg = "NONE" },
     },
     insert = {
-      a = { fg = c.bg, bg = c.success, gui = "bold" },
+      a = { fg = c.bg, bg = c.type, gui = "bold" }, -- VFD cyan: INSERT = entering new structure
       b = { fg = c.fg, bg = c.bg_alt },
       c = { fg = c.fg_dim, bg = "NONE" },
     },

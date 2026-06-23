@@ -24,7 +24,7 @@ return {
     "#0d0d0d", -- black
     "#ff001e", -- red
     "#ffffff", -- green
-    "#ffaa00", -- yellow
+    "#ff8c00", -- yellow → Nixie amber
     "#ff0095", -- blue
     "#ff24ab", -- magenta
     "#6eedf7", -- cyan
@@ -35,10 +35,10 @@ return {
     "#735865", -- bright black
     "#ff2e2e", -- bright red
     "#ffffff", -- bright green
-    "#ffcc00", -- bright yellow
+    "#ff8c00", -- bright yellow → Nixie amber
     "#ff2daf", -- bright blue
     "#ff40c7", -- bright magenta
-    "#a0f7fc", -- bright cyan
+    "#00d4b0", -- bright cyan → VFD cyan
     "#ffffff", -- bright white
   },
 
