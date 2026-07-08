@@ -1,0 +1,23 @@
+{
+  "name": "Vulpes",
+  "background": "#000000",
+  "foreground": "#f2cfdf",
+  "cursorColor": "#e60067",
+  "selectionBackground": "#6b1a3d",
+  "black": "#0d0d0d",
+  "red": "#ff001e",
+  "green": "#ffffff",
+  "yellow": "#ffaa00",
+  "blue": "#ff0095",
+  "purple": "#ff24ab",
+  "cyan": "#6eedf7",
+  "white": "#f2cfdf",
+  "brightBlack": "#735865",
+  "brightRed": "#ff2e2e",
+  "brightGreen": "#ffffff",
+  "brightYellow": "#ffcc00",
+  "brightBlue": "#ff2daf",
+  "brightPurple": "#ff40c7",
+  "brightCyan": "#a0f7fc",
+  "brightWhite": "#ffffff"
+}
