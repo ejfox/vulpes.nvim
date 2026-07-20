@@ -92,7 +92,17 @@ require("lualine").setup({
 
 ## Extras
 
-All in `extras/`:
+All in `extras/`. For everything at once, use the installers instead of copying by hand:
+
+```sh
+# macOS / Debian / WSL2 — copies every theme into ~/.config and rebuilds bat cache
+./extras/install-vulpes.sh          # add --dry to preview
+
+# native Windows (PowerShell) — WezTerm + Windows Terminal + bat
+pwsh -File extras\install-vulpes.ps1   # -SetDefault also selects it in Windows Terminal; -DryRun previews
+```
+
+Both are idempotent and only write theme files — they print the one line you add per tool to switch it on, rather than editing your configs for you. The manual per-tool copies below still work if you want just one:
 
 ### Terminals
 
@@ -128,6 +138,7 @@ Config: `custom-shader = ~/.config/ghostty/shaders/vulpes-tft.glsl`
 | | File | Notes |
 |-|------|-------|
 | MapLibre | `vulpes-maplibre.json` | cyberpunk map style, replace `{key}` with Maptiler API key |
+| Obsidian | `vulpes-obsidian/` | dark + light, `cp -r extras/vulpes-obsidian <vault>/.obsidian/themes/Vulpes` then enable in Settings → Appearance |
 
 ## Palette
 

@@ -1,0 +1,310 @@
+/* Vulpes for Obsidian
+ * https://github.com/ejfox/vulpes.nvim
+ *
+ * Tuftian color discipline: color appears only where it carries
+ * information — links (navigable), tags (metadata), highlights &
+ * selection (user marks), caret/cursorline (location), callouts &
+ * errors (semantics), graph node types. Structure and hierarchy are
+ * carried by weight, size, and spacing, not decoration.
+ *
+ * Install: copy this folder to <vault>/.obsidian/themes/Vulpes/
+ * then Settings → Appearance → Themes → Vulpes
+ */
+
+.theme-dark {
+  /* Accent (the signature vulpes pink #e60067) — drives interactive
+     controls only: buttons, toggles, checkboxes, focus states */
+  --accent-h: 333;
+  --accent-s: 100%;
+  --accent-l: 45%;
+
+  /* Base scale — neutral pink-tinted grounds */
+  --color-base-00: #000000;
+  --color-base-05: #060406;
+  --color-base-10: #0d0d0d;
+  --color-base-20: #121212;
+  --color-base-25: #1a1218;
+  --color-base-30: #2a1520;
+  --color-base-35: #3d2030;
+  --color-base-40: #4a2a3a;
+  --color-base-50: #735865;
+  --color-base-60: #9c7488;
+  --color-base-70: #c490a8;
+  --color-base-100: #f2cfdf;
+
+  /* Extended colors — semantic only (callouts, diagnostics) */
+  --color-red: #ff1043;
+  --color-red-rgb: 255, 16, 67;
+  --color-orange: #ffaa00;
+  --color-orange-rgb: 255, 170, 0;
+  --color-yellow: #ffcc00;
+  --color-yellow-rgb: 255, 204, 0;
+  --color-green: #b4d455;
+  --color-green-rgb: 180, 212, 85;
+  --color-cyan: #6eedf7;
+  --color-cyan-rgb: 110, 237, 247;
+  --color-blue: #ff0095;
+  --color-blue-rgb: 255, 0, 149;
+  --color-purple: #ff24ab;
+  --color-purple-rgb: 255, 36, 171;
+  --color-pink: #e60067;
+  --color-pink-rgb: 230, 0, 103;
+
+  /* Backgrounds — hover/active feedback is neutral, not colored */
+  --background-primary: #000000;
+  --background-primary-alt: #0d0d0d;
+  --background-secondary: #0d0d0d;
+  --background-secondary-alt: #121212;
+  --background-modifier-border: #2a1520;
+  --background-modifier-border-hover: #3d2030;
+  --background-modifier-border-focus: #e60067; /* focus = state info */
+  --background-modifier-hover: rgba(242, 207, 223, 0.05);
+  --background-modifier-active-hover: rgba(242, 207, 223, 0.1);
+
+  /* Text — selection, highlight, and caret are user marks: colored */
+  --text-normal: #f2cfdf;
+  --text-muted: #c490a8;
+  --text-faint: #735865;
+  --text-on-accent: #ffffff;
+  --text-selection: #6b1a3d;
+  --text-highlight-bg: #5c0030;
+  --caret-color: #e60067;
+
+  /* Headings — hierarchy by weight and size only */
+  --h1-weight: 700;
+  --h2-weight: 700;
+  --h3-weight: 700;
+  --h4-weight: 400;
+  --h5-weight: 400;
+  --h6-weight: 400;
+
+  /* Links — pink means "navigable" */
+  --link-color: #ff0095;
+  --link-color-hover: #ff2daf;
+  --link-external-color: #ff277d;
+  --link-external-color-hover: #ff2daf;
+  --link-unresolved-color: #c490a8; /* dimmer = doesn't exist yet */
+
+  /* Blockquotes — teal marks quoted voice, same as code comments */
+  --blockquote-color: #6eedf7;
+  --blockquote-font-style: italic;
+  --blockquote-border-color: #2a1520;
+
+  /* Code — syntax color is information */
+  --code-background: #0d0d0d;
+  --code-normal: #f2cfdf;
+  --code-comment: #6eedf7;
+  --code-keyword: #ff1aca;
+  --code-string: #f5f5f5;
+  --code-value: #ff33c5;
+  --code-function: #ffffff;
+  --code-property: #ff0a91;
+  --code-punctuation: #f82470;
+  --code-tag: #f82e64;
+  --code-important: #ffaa00;
+
+  /* Tags — color marks metadata; no decorative pill */
+  --tag-color: #f82e64;
+  --tag-color-hover: #ff4d9d;
+  --tag-background: transparent;
+  --tag-background-hover: transparent;
+  --tag-border-width: 0;
+
+  /* Lists & tasks — markers are structure: quiet */
+  --list-marker-color: #735865;
+  --checklist-done-color: #735865; /* done = receded */
+
+  /* Tables — quiet rules, no zebra */
+  --table-border-color: #2a1520;
+  --table-header-background: transparent;
+  --table-row-alt-background: transparent;
+
+  /* Rules & dividers — structure, not accent */
+  --hr-color: #3d2030;
+  --divider-color: #2a1520;
+
+  /* Properties / frontmatter — labels are chrome */
+  --metadata-label-text-color: #c490a8;
+
+  /* Indentation guides — structure */
+  --indentation-guide-color: #2a1520;
+  --indentation-guide-color-active: #3d2030;
+
+  /* File explorer — active state via neutral emphasis */
+  --nav-item-color-active: #f2cfdf;
+  --nav-item-background-active: rgba(242, 207, 223, 0.08);
+
+  /* Graph view — color encodes node type */
+  --graph-node: #c490a8;
+  --graph-node-focused: #e60067;
+  --graph-node-tag: #6eedf7;
+  --graph-node-attachment: #ffaa00;
+  --graph-node-unresolved: #735865;
+  --graph-line: #2a1520;
+  --graph-text: #c490a8;
+
+  /* Scrollbars — neutral */
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: rgba(115, 88, 101, 0.4);
+  --scrollbar-active-thumb-bg: rgba(115, 88, 101, 0.7);
+
+  /* Editor cursor (location = information) */
+  --vulpes-cursorline: #1a1218;
+  --vulpes-cursor: #e60067;
+}
+
+.theme-light {
+  /* Accent (#c50058) */
+  --accent-h: 333;
+  --accent-s: 100%;
+  --accent-l: 39%;
+
+  /* Base scale */
+  --color-base-00: #fefefe;
+  --color-base-05: #faf6f8;
+  --color-base-10: #f5f0f2;
+  --color-base-20: #f0eaee;
+  --color-base-25: #ebe5e8;
+  --color-base-30: #e3dae0;
+  --color-base-35: #d5c8d0;
+  --color-base-40: #c0b0ba;
+  --color-base-50: #a08090;
+  --color-base-60: #6b5060;
+  --color-base-70: #4a3040;
+  --color-base-100: #1a0a10;
+
+  /* Extended colors */
+  --color-red: #c50040;
+  --color-red-rgb: 197, 0, 64;
+  --color-orange: #b87700;
+  --color-orange-rgb: 184, 119, 0;
+  --color-yellow: #d99000;
+  --color-yellow-rgb: 217, 144, 0;
+  --color-green: #5a7a20;
+  --color-green-rgb: 90, 122, 32;
+  --color-cyan: #008b8f;
+  --color-cyan-rgb: 0, 139, 143;
+  --color-blue: #c50058;
+  --color-blue-rgb: 197, 0, 88;
+  --color-purple: #a80070;
+  --color-purple-rgb: 168, 0, 112;
+  --color-pink: #c50058;
+  --color-pink-rgb: 197, 0, 88;
+
+  /* Backgrounds */
+  --background-primary: #fefefe;
+  --background-primary-alt: #f5f0f2;
+  --background-secondary: #f5f0f2;
+  --background-secondary-alt: #ebe5e8;
+  --background-modifier-border: #ebe5e8;
+  --background-modifier-border-hover: #d5c8d0;
+  --background-modifier-border-focus: #c50058;
+  --background-modifier-hover: rgba(26, 10, 16, 0.04);
+  --background-modifier-active-hover: rgba(26, 10, 16, 0.08);
+
+  /* Text */
+  --text-normal: #1a0a10;
+  --text-muted: #4a3040;
+  --text-faint: #6b5060;
+  --text-on-accent: #ffffff;
+  --text-selection: #ffd6e8;
+  --text-highlight-bg: #ffe0ed;
+  --caret-color: #c50058;
+
+  /* Headings — hierarchy by weight and size only */
+  --h1-weight: 700;
+  --h2-weight: 700;
+  --h3-weight: 700;
+  --h4-weight: 400;
+  --h5-weight: 400;
+  --h6-weight: 400;
+
+  /* Links */
+  --link-color: #c50058;
+  --link-color-hover: #e60067;
+  --link-external-color: #e60067;
+  --link-external-color-hover: #ff277d;
+  --link-unresolved-color: #a08090;
+
+  /* Blockquotes */
+  --blockquote-color: #008b8f;
+  --blockquote-font-style: italic;
+  --blockquote-border-color: #ebe5e8;
+
+  /* Code */
+  --code-background: #f5f0f2;
+  --code-normal: #1a0a10;
+  --code-comment: #008b8f;
+  --code-keyword: #c50058;
+  --code-string: #1a0a10;
+  --code-value: #b8007a;
+  --code-function: #1a0a10;
+  --code-property: #c50075;
+  --code-punctuation: #c52060;
+  --code-tag: #c52050;
+  --code-important: #b87700;
+
+  /* Tags */
+  --tag-color: #c52050;
+  --tag-color-hover: #d84d8a;
+  --tag-background: transparent;
+  --tag-background-hover: transparent;
+  --tag-border-width: 0;
+
+  /* Lists & tasks */
+  --list-marker-color: #a08090;
+  --checklist-done-color: #a08090;
+
+  /* Tables */
+  --table-border-color: #ebe5e8;
+  --table-header-background: transparent;
+  --table-row-alt-background: transparent;
+
+  /* Rules & dividers */
+  --hr-color: #e3dae0;
+  --divider-color: #ebe5e8;
+
+  /* Properties / frontmatter */
+  --metadata-label-text-color: #4a3040;
+
+  /* Indentation guides */
+  --indentation-guide-color: #ebe5e8;
+  --indentation-guide-color-active: #d5c8d0;
+
+  /* File explorer */
+  --nav-item-color-active: #1a0a10;
+  --nav-item-background-active: rgba(26, 10, 16, 0.06);
+
+  /* Graph view */
+  --graph-node: #6b5060;
+  --graph-node-focused: #c50058;
+  --graph-node-tag: #008b8f;
+  --graph-node-attachment: #b87700;
+  --graph-node-unresolved: #a08090;
+  --graph-line: #ebe5e8;
+  --graph-text: #4a3040;
+
+  /* Scrollbars */
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: rgba(107, 80, 96, 0.3);
+  --scrollbar-active-thumb-bg: rgba(107, 80, 96, 0.6);
+
+  /* Editor cursor */
+  --vulpes-cursorline: #faf6f8;
+  --vulpes-cursor: #c50058;
+}
+
+/* Cursorline — where you are is information */
+.markdown-source-view.mod-cm6 .cm-line.cm-active {
+  background-color: var(--vulpes-cursorline);
+}
+
+/* Vim normal-mode block cursor */
+.cm-fat-cursor {
+  background: var(--vulpes-cursor);
+  color: var(--text-on-accent);
+}
+.cm-editor:not(.cm-focused) .cm-fat-cursor {
+  outline: 1px solid var(--vulpes-cursor);
+  background: none;
+}

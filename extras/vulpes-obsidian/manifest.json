@@ -1,0 +1,7 @@
+{
+  "name": "Vulpes",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "author": "EJ Fox",
+  "authorUrl": "https://github.com/ejfox/vulpes.nvim"
+}
